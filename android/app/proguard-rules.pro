@@ -1,0 +1,2 @@
+-keep class com.tekartik.sqflite.** { *; }
+-keep class io.flutter.plugins.** { *; }
