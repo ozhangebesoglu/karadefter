@@ -182,9 +182,9 @@ Bu proje MIT lisansı altında lisanslanmıştır.
 
 ## 📞 İletişim
 
-- **Geliştirici**: Kara Defter Team
-- **E-posta**: [email@example.com]
-- **Proje Linki**: [https://github.com/username/kara-defter]
+- **Geliştirici**: Özhan Gebeşoğlu
+- **E-posta**: ozhan.gebesoglu@gmail.com
+- **Proje Linki**: [https://github.com/ozhangebesoglu/kara-defter]
 
 ## 🙏 Teşekkürler
 
