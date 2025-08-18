@@ -5,8 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kara_defter/core/di/injection_container.dart' as di;
 import 'package:kara_defter/core/theme/app_theme.dart';
 import 'package:kara_defter/features/dashboard/presentation/pages/dashboard_page.dart';
-import 'package:kara_defter/features/customer/presentation/pages/customer_list_page.dart';
-import 'package:kara_defter/features/transaction/presentation/pages/transaction_list_page.dart';
+import 'package:kara_defter/features/customer/presentation/pages/customer_transactions_page.dart';
 import 'package:kara_defter/features/settings/presentation/pages/settings_page.dart';
 import 'package:kara_defter/features/customer/presentation/bloc/customer_bloc.dart';
 import 'package:kara_defter/features/transaction/presentation/bloc/transaction_bloc.dart';
@@ -73,13 +72,8 @@ class _MainNavigationPageState extends State<MainNavigationPage>
     ),
     NavigationItem(
       icon: Icons.people,
-      label: 'Müşteriler',
-      page: const CustomerListPage(),
-    ),
-    NavigationItem(
-      icon: Icons.receipt_long,
-      label: 'İşlemler',
-      page: const TransactionListPage(),
+      label: 'Müşteriler & İşlemler',
+      page: const CustomerTransactionsPage(),
     ),
     NavigationItem(
       icon: Icons.settings,

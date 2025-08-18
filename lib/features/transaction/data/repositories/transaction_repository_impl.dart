@@ -28,13 +28,13 @@ class TransactionRepositoryImpl implements TransactionRepository {
 
   @override
   Future<List<TransactionEntity>> getTransactionsByCustomer(
-      int customerId) async {
+      String customerName) async {
     try {
       final db = await _database.database;
       final List<Map<String, dynamic>> maps = await db.query(
         'transactions',
-        where: 'customer_id = ?',
-        whereArgs: [customerId],
+        where: 'customer_name = ?',
+        whereArgs: [customerName],
         orderBy: 'date DESC',
       );
 
@@ -154,10 +154,9 @@ class TransactionRepositoryImpl implements TransactionRepository {
     try {
       final db = await _database.database;
       final List<Map<String, dynamic>> maps = await db.rawQuery('''
-        SELECT t.* FROM transactions t
-        INNER JOIN customers c ON t.customer_id = c.id
-        WHERE c.name LIKE ? OR t.description LIKE ?
-        ORDER BY t.date DESC
+        SELECT * FROM transactions 
+        WHERE customer_name LIKE ? OR description LIKE ?
+        ORDER BY date DESC
       ''', ['%$query%', '%$query%']);
 
       return maps
