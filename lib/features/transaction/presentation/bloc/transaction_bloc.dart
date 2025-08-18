@@ -14,12 +14,12 @@ abstract class TransactionEvent extends Equatable {
 class LoadTransactions extends TransactionEvent {}
 
 class LoadTransactionsByCustomer extends TransactionEvent {
-  final int customerId;
+  final String customerName;
 
-  const LoadTransactionsByCustomer(this.customerId);
+  const LoadTransactionsByCustomer(this.customerName);
 
   @override
-  List<Object?> get props => [customerId];
+  List<Object?> get props => [customerName];
 }
 
 class AddTransaction extends TransactionEvent {
@@ -162,7 +162,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     emit(TransactionLoading());
     try {
       final transactions = await _transactionRepository
-          .getTransactionsByCustomer(event.customerId);
+          .getTransactionsByCustomer(event.customerName);
       emit(TransactionLoaded(transactions));
     } catch (e) {
       emit(TransactionError(e.toString()));

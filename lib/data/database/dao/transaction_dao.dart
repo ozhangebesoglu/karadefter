@@ -32,11 +32,11 @@ class TransactionDao {
   }
 
   Future<List<TransactionModel>> getTransactionsByCustomer(
-      int customerId) async {
+      String customerName) async {
     final List<Map<String, dynamic>> maps = await database.query(
       TransactionTable.tableName,
-      where: '${TransactionTable.customerId} = ?',
-      whereArgs: [customerId],
+      where: '${TransactionTable.customerName} = ?',
+      whereArgs: [customerName],
       orderBy: '${TransactionTable.date} DESC',
     );
 
@@ -110,23 +110,23 @@ class TransactionDao {
     return (result.first.values.first as num?)?.toDouble() ?? 0.0;
   }
 
-  Future<double> getCustomerBalance(int customerId) async {
+  Future<double> getCustomerBalance(String customerName) async {
     final creditResult = await database.rawQuery(
       '''
       SELECT SUM(${TransactionTable.amount}) 
       FROM ${TransactionTable.tableName} 
-      WHERE ${TransactionTable.customerId} = ? AND ${TransactionTable.type} = 'credit'
+      WHERE ${TransactionTable.customerName} = ? AND ${TransactionTable.type} = 'credit'
     ''',
-      [customerId],
+      [customerName],
     );
 
     final debitResult = await database.rawQuery(
       '''
       SELECT SUM(${TransactionTable.amount}) 
       FROM ${TransactionTable.tableName} 
-      WHERE ${TransactionTable.customerId} = ? AND ${TransactionTable.type} = 'debit'
+      WHERE ${TransactionTable.customerName} = ? AND ${TransactionTable.type} = 'debit'
     ''',
-      [customerId],
+      [customerName],
     );
 
     final totalCredit =

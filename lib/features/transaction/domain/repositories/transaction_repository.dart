@@ -2,7 +2,7 @@ import 'package:kara_defter/features/transaction/domain/entities/transaction_ent
 
 abstract class TransactionRepository {
   Future<List<TransactionEntity>> getAllTransactions();
-  Future<List<TransactionEntity>> getTransactionsByCustomer(int customerId);
+  Future<List<TransactionEntity>> getTransactionsByCustomer(String customerName);
   Future<TransactionEntity?> getTransactionById(int id);
   Future<int> addTransaction(TransactionEntity transaction);
   Future<int> updateTransaction(TransactionEntity transaction);

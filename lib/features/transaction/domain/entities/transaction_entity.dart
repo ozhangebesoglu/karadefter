@@ -4,7 +4,7 @@ enum TransactionType { credit, debit }
 
 class TransactionEntity extends Equatable {
   final int? id;
-  final int customerId;
+  final String customerName;
   final TransactionType type;
   final double amount;
   final String? description;
@@ -13,7 +13,7 @@ class TransactionEntity extends Equatable {
 
   const TransactionEntity({
     this.id,
-    required this.customerId,
+    required this.customerName,
     required this.type,
     required this.amount,
     this.description,
@@ -23,11 +23,11 @@ class TransactionEntity extends Equatable {
 
   @override
   List<Object?> get props =>
-      [id, customerId, type, amount, description, date, createdAt];
+      [id, customerName, type, amount, description, date, createdAt];
 
   TransactionEntity copyWith({
     int? id,
-    int? customerId,
+    String? customerName,
     TransactionType? type,
     double? amount,
     String? description,
@@ -36,7 +36,7 @@ class TransactionEntity extends Equatable {
   }) {
     return TransactionEntity(
       id: id ?? this.id,
-      customerId: customerId ?? this.customerId,
+      customerName: customerName ?? this.customerName,
       type: type ?? this.type,
       amount: amount ?? this.amount,
       description: description ?? this.description,
